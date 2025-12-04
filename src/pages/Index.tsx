@@ -83,7 +83,7 @@ const Index = () => {
             <TabsContent value="видео" className="mt-8">
               <div className="grid md:grid-cols-2 gap-6">
                 {[
-                  { title: 'Тур по Сингапуру', videoId: 'WBqUa1t-qWA', duration: '15 мин' },
+                  { title: 'Тур по Сингапуру', videoId: 'Jc_P5levqnM', duration: '15 мин' },
                   { title: 'Достопримечательности', videoId: '1gKX9TWRyfs', duration: '10 мин' }
                 ].map((item, i) => (
                   <Card key={i} className="hover-lift overflow-hidden group">
