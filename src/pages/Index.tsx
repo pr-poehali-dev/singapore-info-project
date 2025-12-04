@@ -64,13 +64,13 @@ const Index = () => {
             <TabsContent value="фото" className="mt-8">
               <div className="grid md:grid-cols-3 gap-6">
                 {[
-                  { title: 'Marina Bay Sands', desc: 'Символ современного Сингапура' },
-                  { title: 'Gardens by the Bay', desc: 'Футуристические сады' },
-                  { title: 'Chinatown', desc: 'Исторический квартал' }
+                  { title: 'Marina Bay Sands', desc: 'Символ современного Сингапура', img: 'https://cdn.poehali.dev/projects/2d0355f4-c401-4ead-89a6-6da2835d1d3e/files/fb9d34c8-86f1-42e6-bdc1-54d408efb6b4.jpg' },
+                  { title: 'Gardens by the Bay', desc: 'Футуристические сады', img: 'https://cdn.poehali.dev/projects/2d0355f4-c401-4ead-89a6-6da2835d1d3e/files/928a703e-f6ed-4ddf-b598-5196f7f35045.jpg' },
+                  { title: 'Chinatown', desc: 'Исторический квартал', img: 'https://cdn.poehali.dev/projects/2d0355f4-c401-4ead-89a6-6da2835d1d3e/files/c40e6397-549d-410b-b315-d82f134ade60.jpg' }
                 ].map((item, i) => (
                   <Card key={i} className="hover-lift overflow-hidden group cursor-pointer">
-                    <div className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <Icon name="Image" size={48} className="text-primary/50 group-hover:scale-110 transition-transform" />
+                    <div className="h-48 overflow-hidden">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <CardContent className="p-4">
                       <h4 className="font-semibold">{item.title}</h4>
@@ -83,12 +83,18 @@ const Index = () => {
             <TabsContent value="видео" className="mt-8">
               <div className="grid md:grid-cols-2 gap-6">
                 {[
-                  { title: 'Тур по Сингапуру', duration: '15 мин' },
-                  { title: 'Достопримечательности', duration: '10 мин' }
+                  { title: 'Тур по Сингапуру', videoId: 'WBqUa1t-qWA', duration: '15 мин' },
+                  { title: 'Достопримечательности', videoId: '1gKX9TWRyfs', duration: '10 мин' }
                 ].map((item, i) => (
                   <Card key={i} className="hover-lift overflow-hidden group">
-                    <div className="h-56 bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-                      <Icon name="Play" size={64} className="text-accent group-hover:scale-110 transition-transform cursor-pointer" />
+                    <div className="relative h-56 overflow-hidden">
+                      <iframe 
+                        className="w-full h-full" 
+                        src={`https://www.youtube.com/embed/${item.videoId}`}
+                        title={item.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen
+                      />
                     </div>
                     <CardContent className="p-4">
                       <h4 className="font-semibold">{item.title}</h4>
@@ -101,8 +107,8 @@ const Index = () => {
             <TabsContent value="аудио" className="mt-8">
               <div className="space-y-4">
                 {[
-                  { title: 'Звуки улиц Сингапура', duration: '8 мин' },
-                  { title: 'Традиционная музыка', duration: '12 мин' }
+                  { title: 'Звуки улиц Сингапура', url: 'https://www.youtube.com/watch?v=abcdefghijk', duration: '8 мин' },
+                  { title: 'Традиционная музыка', url: 'https://www.youtube.com/watch?v=lmnopqrstuv', duration: '12 мин' }
                 ].map((item, i) => (
                   <Card key={i} className="hover-lift">
                     <CardContent className="p-6 flex items-center gap-4">
@@ -113,9 +119,11 @@ const Index = () => {
                         <h4 className="font-semibold">{item.title}</h4>
                         <p className="text-sm text-muted-foreground">{item.duration}</p>
                       </div>
-                      <Button size="icon" variant="outline">
-                        <Icon name="Play" size={20} />
-                      </Button>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        <Button size="icon" variant="outline">
+                          <Icon name="ExternalLink" size={20} />
+                        </Button>
+                      </a>
                     </CardContent>
                   </Card>
                 ))}
