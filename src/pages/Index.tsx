@@ -261,9 +261,17 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="города" className="py-20">
-        <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-bold text-center mb-12 text-gradient">Города для посещения</h3>
+      <section id="города" className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://cdn.poehali.dev/projects/2d0355f4-c401-4ead-89a6-6da2835d1d3e/files/b5494103-401d-4157-9a70-ceb5980bd1d2.jpg" 
+            alt="Singapore background" 
+            className="w-full h-full object-cover blur-sm" 
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <h3 className="text-4xl font-bold text-center mb-12 text-white drop-shadow-lg">Места для посещения</h3>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
@@ -285,7 +293,7 @@ const Index = () => {
                 icon: 'Palmtree'
               }
             ].map((item, i) => (
-              <Card key={i} className="hover-lift animate-fade-in" style={{ animationDelay: `${i * 0.1}s` }}>
+              <Card key={i} className="hover-lift animate-fade-in bg-white/95 backdrop-blur" style={{ animationDelay: `${i * 0.1}s` }}>
                 <CardContent className="p-6">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4">
                     <Icon name={item.icon as any} size={32} className="text-primary" />
